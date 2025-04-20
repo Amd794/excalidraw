@@ -350,7 +350,10 @@
     "zoomToSelection": "",
     "toggleElementLock": "",
     "movePageUpDown": "",
-    "movePageLeftRight": ""
+    "movePageLeftRight": "",
+    
+    "toolsDescription": "Online tools for various task requirements",
+    "aiTools": "Powerful AI-driven tools to enhance your productivity"
   },
   "clearCanvasDialog": {
     "title": "Dọn canvas"

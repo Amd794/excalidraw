@@ -350,7 +350,9 @@
     "zoomToSelection": "縮放至選取區",
     "toggleElementLock": "鎖定/解鎖已選的項目",
     "movePageUpDown": "向上/下移動頁面",
-    "movePageLeftRight": "向左/右移動頁面"
+    "movePageLeftRight": "向左/右移動頁面",
+    "toolsDescription": "滿足各種任務需求的線上工具",
+    "aiTools": "強大的AI驅動工具，提升您的工作效率"
   },
   "clearCanvasDialog": {
     "title": "清除畫布"

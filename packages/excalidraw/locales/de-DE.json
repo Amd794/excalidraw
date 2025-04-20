@@ -350,7 +350,9 @@
     "zoomToSelection": "Auf Auswahl zoomen",
     "toggleElementLock": "Auswahl sperren/entsperren",
     "movePageUpDown": "Seite nach oben/unten verschieben",
-    "movePageLeftRight": "Seite nach links/rechts verschieben"
+    "movePageLeftRight": "Seite nach links/rechts verschieben",
+    "toolsDescription": "Online tools for various task requirements",
+    "aiTools": "Powerful AI-driven tools to enhance your productivity"
   },
   "clearCanvasDialog": {
     "title": "Zeichenfläche löschen"

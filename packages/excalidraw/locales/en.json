@@ -419,7 +419,9 @@
     "movePageUpDown": "Move page up/down",
     "movePageLeftRight": "Move page left/right",
     "cropStart": "Crop image",
-    "cropFinish": "Finish image cropping"
+    "cropFinish": "Finish image cropping",
+    "toolsDescription": "Online tools for various task requirements",
+    "aiTools": "Powerful AI-driven tools to enhance your productivity"
   },
   "clearCanvasDialog": {
     "title": "Clear canvas"

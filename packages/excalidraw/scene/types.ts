@@ -130,14 +130,12 @@ export type ScrollBars = {
     y: number;
     width: number;
     height: number;
-    deltaMultiplier: number;
   } | null;
   vertical: {
     x: number;
     y: number;
     width: number;
     height: number;
-    deltaMultiplier: number;
   } | null;
 };
 

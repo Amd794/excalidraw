@@ -350,7 +350,9 @@
     "zoomToSelection": "",
     "toggleElementLock": "",
     "movePageUpDown": "",
-    "movePageLeftRight": ""
+    "movePageLeftRight": "",
+    "toolsDescription": "滿足各種任務需求的線上工具",
+    "aiTools": "強大的AI驅動工具，提升您的工作效率"
   },
   "clearCanvasDialog": {
     "title": ""

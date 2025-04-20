@@ -1,5 +1,6 @@
 {
   "labels": {
+    "theme": "主题",
     "paste": "粘贴",
     "pasteAsPlaintext": "粘贴为纯文本",
     "pasteCharts": "粘贴图表",
@@ -350,7 +351,9 @@
     "zoomToSelection": "缩放到选区",
     "toggleElementLock": "锁定/解锁",
     "movePageUpDown": "上下移动页面",
-    "movePageLeftRight": "左右移动页面"
+    "movePageLeftRight": "左右移动页面",
+    "toolsDescription": "满足各种任务需求的在线工具",
+    "aiTools": "强大的AI驱动工具，提升您的工作效率"
   },
   "clearCanvasDialog": {
     "title": "清除画布"
@@ -515,11 +518,33 @@
       }
     }
   },
+  "search": {
+    "title": "在画布上查找",
+    "noMatch": "未找到匹配项...",
+    "singleResult": "结果",
+    "multipleResults": "所有结果",
+    "placeholder": "在画布上查找文本..."
+  },
   "mermaid": {
     "title": "Mermaid 至 Excalidraw",
     "button": "插入",
     "description": "目前仅支持<flowchartLink>流程图</flowchartLink>、<sequenceLink>序列图</sequenceLink>和<classLink>类图</classLink>。其他类型在 Excalidraw 中将以图像呈现。",
     "syntax": "Mermaid 语法",
     "preview": "预览"
+  },
+  "commandPalette": {
+    "title": "命令面板",
+    "shortcuts": {
+      "select": "选择",
+      "confirm": "确认",
+      "close": "关闭"
+    },
+    "recents": "最近使用",
+    "search": {
+      "placeholder": "搜索菜单、命令并发现隐藏的宝藏",
+      "noMatch": "没有匹配的命令..."
+    },
+    "itemNotAvailable": "命令不可用...",
+    "shortcutHint": "对于命令面板，请使用 {{shortcut}}"
   }
 }

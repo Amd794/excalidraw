@@ -9,7 +9,6 @@ import { probablySupportsClipboardBlob } from "../clipboard";
 import { t } from "../i18n";
 
 import { Dialog } from "./Dialog";
-import { ExternalLinkIcon, GithubIcon, youtubeIcon } from "./icons";
 
 import "./HelpDialog.scss";
 
@@ -17,42 +16,104 @@ import type { JSX } from "react";
 
 const Header = () => (
   <div className="HelpDialog__header">
-    <a
-      className="HelpDialog__btn"
-      href="https://docs.excalidraw.com"
-      target="_blank"
-      rel="noopener noreferrer"
+    <div
+      style={{
+        marginBottom: "20px",
+        width: "100%",
+        backgroundColor: "var(--island-bg-color, #f8f9fa)",
+        borderRadius: "8px",
+        padding: "10px 14px",
+        display: "flex",
+        alignItems: "center",
+        boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+        transition: "all 0.2s ease",
+        border: "1px solid var(--dialog-border-color, #e9ecef)",
+      }}
     >
-      <div className="HelpDialog__link-icon">{ExternalLinkIcon}</div>
-      {t("helpDialog.documentation")}
-    </a>
-    <a
-      className="HelpDialog__btn"
-      href="https://plus.excalidraw.com/blog"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div className="HelpDialog__link-icon">{ExternalLinkIcon}</div>
-      {t("helpDialog.blog")}
-    </a>
-    <a
-      className="HelpDialog__btn"
-      href="https://github.com/excalidraw/excalidraw/issues"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div className="HelpDialog__link-icon">{GithubIcon}</div>
-      {t("helpDialog.github")}
-    </a>
-    <a
-      className="HelpDialog__btn"
-      href="https://youtube.com/@excalidraw"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div className="HelpDialog__link-icon">{youtubeIcon}</div>
-      YouTube
-    </a>
+      <a
+        href="https://tools.cmdragon.cn/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          color: "var(--text-primary-color, #5c5c5c)",
+          fontSize: "13px",
+          textDecoration: "none",
+          width: "100%",
+          padding: "2px 0",
+          transition: "color 0.2s ease",
+        }}
+        aria-label="访问 CMDragon 工具"
+        tabIndex={0}
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            window.open(
+              "https://tools.cmdragon.cn/",
+              "_blank",
+              "noopener,noreferrer",
+            );
+          }
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.color = "var(--color-primary, #6965db)";
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.color = "var(--text-primary-color, #5c5c5c)";
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <span style={{ fontWeight: "500" }}>
+            {t("helpDialog.toolsDescription")}
+          </span>
+          <span
+            style={{
+              fontSize: "11px",
+              color: "var(--text-secondary-color, #6b7280)",
+              marginTop: "2px",
+            }}
+          >
+            {t("helpDialog.aiTools")}
+          </span>
+        </div>
+        <span
+          style={{
+            color: "var(--text-secondary-color, #989898)",
+            marginLeft: "auto",
+            fontSize: "12px",
+            fontWeight: "500",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "var(--color-primary-light, #e8e7fd)",
+              width: "22px",
+              height: "22px",
+              borderRadius: "5px",
+              marginRight: "10px",
+            }}
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                fill="var(--color-primary, #6965db)"
+              />
+            </svg>
+          </div>
+        </span>
+      </a>
+    </div>
   </div>
 );
 

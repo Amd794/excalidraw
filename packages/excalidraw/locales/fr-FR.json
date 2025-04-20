@@ -350,7 +350,9 @@
     "zoomToSelection": "Zoomer sur la sélection",
     "toggleElementLock": "Verrouiller/déverrouiller la sélection",
     "movePageUpDown": "Déplacer la page vers le haut/bas",
-    "movePageLeftRight": "Déplacer la page vers la gauche/droite"
+    "movePageLeftRight": "Déplacer la page vers la gauche/droite",
+    "toolsDescription": "Outils en ligne pour diverses exigences de tâches",
+    "aiTools": "Outils puissants AI pour améliorer votre productivité"
   },
   "clearCanvasDialog": {
     "title": "Effacer la zone de dessin"

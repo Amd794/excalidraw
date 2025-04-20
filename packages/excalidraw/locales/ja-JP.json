@@ -350,7 +350,9 @@
     "zoomToSelection": "選択要素にズーム",
     "toggleElementLock": "選択したアイテムをロック/ロック解除",
     "movePageUpDown": "ページを上下に移動",
-    "movePageLeftRight": "ページを左右に移動"
+    "movePageLeftRight": "ページを左右に移動",
+    "toolsDescription": "さまざまなタスク要件に対応するオンラインツール",
+    "aiTools": "強力なAI駆動ツールで生産性を向上させます"
   },
   "clearCanvasDialog": {
     "title": "キャンバスを消去"

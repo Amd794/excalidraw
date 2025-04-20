@@ -11,7 +11,6 @@ export const SCROLLBAR_MARGIN = 4;
 export const SCROLLBAR_WIDTH = 6;
 export const SCROLLBAR_COLOR = "rgba(0,0,0,0.3)";
 
-// The scrollbar represents where the viewport is in relationship to the scene
 export const getScrollBars = (
   elements: RenderableElementsMap,
   viewportWidth: number,
@@ -32,6 +31,9 @@ export const getScrollBars = (
   const viewportWidthWithZoom = viewportWidth / appState.zoom.value;
   const viewportHeightWithZoom = viewportHeight / appState.zoom.value;
 
+  const viewportWidthDiff = viewportWidth - viewportWidthWithZoom;
+  const viewportHeightDiff = viewportHeight - viewportHeightWithZoom;
+
   const safeArea = {
     top: parseInt(getGlobalCSSVariable("sat")) || 0,
     bottom: parseInt(getGlobalCSSVariable("sab")) || 0,
@@ -42,8 +44,10 @@ export const getScrollBars = (
   const isRTL = getLanguage().rtl;
 
   // The viewport is the rectangle currently visible for the user
-  const viewportMinX = -appState.scrollX + safeArea.left;
-  const viewportMinY = -appState.scrollY + safeArea.top;
+  const viewportMinX =
+    -appState.scrollX + viewportWidthDiff / 2 + safeArea.left;
+  const viewportMinY =
+    -appState.scrollY + viewportHeightDiff / 2 + safeArea.top;
   const viewportMaxX = viewportMinX + viewportWidthWithZoom - safeArea.right;
   const viewportMaxY = viewportMinY + viewportHeightWithZoom - safeArea.bottom;
 
@@ -53,43 +57,8 @@ export const getScrollBars = (
   const sceneMaxX = Math.max(elementsMaxX, viewportMaxX);
   const sceneMaxY = Math.max(elementsMaxY, viewportMaxY);
 
-  // the elements-only bbox
-  const sceneWidth = elementsMaxX - elementsMinX;
-  const sceneHeight = elementsMaxY - elementsMinY;
+  // The scrollbar represents where the viewport is in relationship to the scene
 
-  // scene (elements) bbox + the viewport bbox that extends outside of it
-  const extendedSceneWidth = sceneMaxX - sceneMinX;
-  const extendedSceneHeight = sceneMaxY - sceneMinY;
-
-  const scrollWidthOffset =
-    Math.max(SCROLLBAR_MARGIN * 2, safeArea.left + safeArea.right) +
-    SCROLLBAR_WIDTH * 2;
-
-  const scrollbarWidth =
-    viewportWidth * (viewportWidthWithZoom / extendedSceneWidth) -
-    scrollWidthOffset;
-
-  const scrollbarHeightOffset =
-    Math.max(SCROLLBAR_MARGIN * 2, safeArea.top + safeArea.bottom) +
-    SCROLLBAR_WIDTH * 2;
-
-  const scrollbarHeight =
-    viewportHeight * (viewportHeightWithZoom / extendedSceneHeight) -
-    scrollbarHeightOffset;
-  // NOTE the delta multiplier calculation isn't quite correct when viewport
-  // is extended outside the scene (elements) bbox as there's some small
-  // accumulation error. I'll let this be an exercise for others to fix. ^^
-  const horizontalDeltaMultiplier =
-    extendedSceneWidth > sceneWidth
-      ? (extendedSceneWidth * appState.zoom.value) /
-        (scrollbarWidth + scrollWidthOffset)
-      : viewportWidth / (scrollbarWidth + scrollWidthOffset);
-
-  const verticalDeltaMultiplier =
-    extendedSceneHeight > sceneHeight
-      ? (extendedSceneHeight * appState.zoom.value) /
-        (scrollbarHeight + scrollbarHeightOffset)
-      : viewportHeight / (scrollbarHeight + scrollbarHeightOffset);
   return {
     horizontal:
       viewportMinX === sceneMinX && viewportMaxX === sceneMaxX
@@ -97,17 +66,18 @@ export const getScrollBars = (
         : {
             x:
               Math.max(safeArea.left, SCROLLBAR_MARGIN) +
-              SCROLLBAR_WIDTH +
-              ((viewportMinX - sceneMinX) / extendedSceneWidth) * viewportWidth,
+              ((viewportMinX - sceneMinX) / (sceneMaxX - sceneMinX)) *
+                viewportWidth,
             y:
               viewportHeight -
               SCROLLBAR_WIDTH -
               Math.max(SCROLLBAR_MARGIN, safeArea.bottom),
-            width: scrollbarWidth,
+            width:
+              ((viewportMaxX - viewportMinX) / (sceneMaxX - sceneMinX)) *
+                viewportWidth -
+              Math.max(SCROLLBAR_MARGIN * 2, safeArea.left + safeArea.right),
             height: SCROLLBAR_WIDTH,
-            deltaMultiplier: horizontalDeltaMultiplier,
           },
-
     vertical:
       viewportMinY === sceneMinY && viewportMaxY === sceneMaxY
         ? null
@@ -118,13 +88,14 @@ export const getScrollBars = (
                 SCROLLBAR_WIDTH -
                 Math.max(safeArea.right, SCROLLBAR_MARGIN),
             y:
-              Math.max(safeArea.top, SCROLLBAR_MARGIN) +
-              SCROLLBAR_WIDTH +
-              ((viewportMinY - sceneMinY) / extendedSceneHeight) *
-                viewportHeight,
+              ((viewportMinY - sceneMinY) / (sceneMaxY - sceneMinY)) *
+                viewportHeight +
+              Math.max(safeArea.top, SCROLLBAR_MARGIN),
             width: SCROLLBAR_WIDTH,
-            height: scrollbarHeight,
-            deltaMultiplier: verticalDeltaMultiplier,
+            height:
+              ((viewportMaxY - viewportMinY) / (sceneMaxY - sceneMinY)) *
+                viewportHeight -
+              Math.max(SCROLLBAR_MARGIN * 2, safeArea.top + safeArea.bottom),
           },
   };
 };
