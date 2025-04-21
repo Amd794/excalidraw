@@ -17,6 +17,14 @@ export default defineConfig(({ mode }) => {
       port: Number(envVars.VITE_APP_PORT || 3000),
       // open the browser
       open: true,
+
+      proxy: {
+        // proxyon为代理前缀，如果请求中包含该前缀，就走代理
+        "/api": {
+          target: `http://127.0.0.1:8003`,
+          changeOrigin: true
+        }
+      }
     },
     // We need to specify the envDir since now there are no
     //more located in parallel with the vite.config.ts file but in parent dir

@@ -40,7 +40,7 @@ export const AIComponents = ({
           const response = await fetch(
             `${
               import.meta.env.VITE_APP_AI_BACKEND
-            }/v1/ai/diagram-to-code/generate`,
+            }/api/v1/aichat/diagram-to-code/generate`,
             {
               method: "POST",
               headers: {
@@ -104,7 +104,7 @@ export const AIComponents = ({
             const response = await fetch(
               `${
                 import.meta.env.VITE_APP_AI_BACKEND
-              }/v1/ai/text-to-diagram/generate`,
+              }/api/v1/aichat/text-to-diagram/generate`,
               {
                 method: "POST",
                 headers: {
